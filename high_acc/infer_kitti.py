@@ -18,7 +18,7 @@ from pcdet.utils import common_utils
 kitti_cfg = yaml.load(open('../../../config/kitti.yaml', 'r'), Loader=yaml.Loader)
 kitti_merge_data_dir = kitti_cfg['KITTI_merge_data_dir']
 kitti_velodyne = os.path.join(kitti_merge_data_dir, 'velodyne')
-dst_high_acc_label_dir = os.path.join(kitti_cfg['root_dir'], 'high_acc/label_2')
+dst_high_acc_label_dir = os.path.join(kitti_cfg['data_dir'], 'high_acc/label_2')
 
 
 class DemoDataset(DatasetTemplate):

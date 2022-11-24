@@ -8,10 +8,12 @@ kitti_root_dir = kitti_cfg['root_dir']
 kitti_merge_data_dir = kitti_cfg['KITTI_merge_data_dir']
 mode = kitti_cfg['label_mode']
 target_cls = ['Car']
+data_dir = kitti_cfg['data_dir']
+
 
 if __name__ == '__main__':
-    label_dir = ['{}/{}/label_2'.format(kitti_root_dir, i) for i in mode]
-    dst_filter_label_dir = ['{}/{}/filter_label_2'.format(kitti_root_dir, i) for i in mode]
+    label_dir = ['{}/{}/label_2'.format(data_dir, i) for i in mode]
+    dst_filter_label_dir = ['{}/{}/filter_label_2'.format(data_dir, i) for i in mode]
     for d in dst_filter_label_dir:
         if not os.path.exists(d):
             os.makedirs(d)
@@ -21,11 +23,13 @@ if __name__ == '__main__':
     train_id = np.loadtxt(train_id_path, dtype=str)
 
     filter_train_id_path = [os.path.join(root_dir, 'split/train_{}.txt'.format(i)) for i in mode]
-
+    import warnings
     for l_d, dst_l_d, filter_id in zip(label_dir, dst_filter_label_dir, filter_train_id_path):
         id_list = []
         for id in tqdm(train_id):
-            cur_label = np.loadtxt(os.path.join(l_d, id+'.txt'), dtype=str).reshape(-1, 15)
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore")
+                cur_label = np.loadtxt(os.path.join(l_d, id+'.txt'), dtype=str).reshape(-1, 15)
             if cur_label.shape[0] < 1:
                 continue
 

@@ -1,12 +1,12 @@
 type: 'kitti'
-root_dir: '.'
+root_dir: '/media/fjn1002/WD4T/2022/LPCG_forked'
 
-data_dir: './data/kitti'
-raw_data_dir: './data/kitti/raw_data'
-KITTI3D_data_dir: './data/kitti/KITTI3D/training'
-KITTI_merge_data_dir: './data/kitti/kitti_merge/training'
+data_dir: '/media/fjn1002/WD4T/2022/lpcgdata'
+raw_data_dir: '/media/fjn1002/WD4T/2022/lpcgdata/raw_data'
+KITTI3D_data_dir: '/media/fjn1002/WD4T/2022/lpcgdata/KITTI3D/training'
+KITTI_merge_data_dir: '/media/fjn1002/WD4T/2022/lpcgdata/kitti_merge/training'
 
 writelist: ['Car']
-label_mode: ['high_acc']
+label_mode: ['high_acc', 'low_cost']
 #optional: label_mode: ['low_cost'] or label_mode: ['high_acc', 'low_cost']
 

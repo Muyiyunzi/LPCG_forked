@@ -9,7 +9,7 @@ import utils
 
 kitti_cfg = yaml.load(open('./config/kitti.yaml', 'r'), Loader=yaml.Loader)
 kitti_merge_data_dir = kitti_cfg['KITTI_merge_data_dir']
-dst_low_cost_label_dir = os.path.join(kitti_cfg['root_dir'], 'low_cost/label_2')
+dst_low_cost_label_dir = os.path.join(kitti_cfg['data_dir'], 'low_cost/label_2')
 
 
 def obtain_cluster_box(l_3d, l_2d, seg_bbox_path, seg_mask_path, P2, wh_range, mask_conf):
